@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Filtri</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -22,16 +22,17 @@
     }
     </style>
 </head>
-<div class="container-fluid">
-    <!-- Sezione Filtri -->
-    <section class="mb-4">
 
-        <div class="title">
-            <h5 class="mb-0">Filtri</h5>
-        </div>
+<body>
+    <?= view('nav_bar') ?>
+
+
+    <!-- Filer Section -->
+    <section class="container-fluid mb-4">
+
         <div class="row">
             <form method="get" action="">
-                <div class="row g-3">
+                <div class="row pb-3 mt-3 border border-primary g-3">
                     <!-- Filtro Ricerca -->
                     <div class="col-md-4">
                         <label for="searchInput" class="form-label">Cerca</label>
@@ -88,7 +89,7 @@
                     </div>
 
                     <!-- Action Buttons -->
-                    <div class="col-md-2 d-flex align-items-end">
+                    <div class="col-md-2 d-flex align-items-end ">
                         <div class="btn-group w-100" role="group">
                             <button type="submit" class="btn btn-primary">Apply</button>
                             <a href="#" class="btn btn-outline-secondary">Reset</a>
@@ -97,15 +98,14 @@
                 </div>
             </form>
         </div>
-</div>
-</section>
+    </section>
 
-<!-- Sezione Card -->
-<section>
-    <div class="row justify-content-center g-4">
-        <?php foreach ($items as $item): ?>
-        <div class="col-auto">
-            <?= view('card', [
+    <!-- Card section -->
+    <section class="container-fluid">
+        <div class="row justify-content-center g-4">
+            <?php foreach ($items as $item): ?>
+            <div class="col-auto">
+                <?= view('card', [
                 'title' => $item['title'] ?? '',
                 'text'  => $item['testo'] ?? '',
                 'image' => $item['img'] ?? '',
@@ -114,8 +114,12 @@
                 'variant' => $item['variant'] ?? '',
                 'release_year' => $item['release_year'] ?? ''
             ]) ?>
+            </div>
+            <?php endforeach; ?>
         </div>
-        <?php endforeach; ?>
+    </section>
     </div>
-</section>
-</div>
+
+</body>
+
+</html>
